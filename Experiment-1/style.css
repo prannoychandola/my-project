@@ -1,0 +1,18 @@
+form {
+    background-color: violet;
+    width : 300px;
+    height : 250px;
+    border : 30px ridge red;
+    border-radius: 10px;
+    padding : 30px;
+    margin : 100px;
+    display : flex;
+    flex-direction: column;
+}
+body {
+    background-color : lightblue;
+    display : flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: space-between;
+}
