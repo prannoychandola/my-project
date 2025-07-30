@@ -1,0 +1,28 @@
+body {
+    background-color: #bd6d6d;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background-color: #fff;
+    height: 200px;
+    width: 600px;    
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.inner-container {
+    padding: 50px;
+    text-align: center;
+}
+
+.buttons {
+    padding: 15px
+}
+
+.withdraw {
+    background-color: grey;
+}
