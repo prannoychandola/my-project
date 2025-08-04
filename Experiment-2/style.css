@@ -1,28 +1,47 @@
 body {
-    background-color: #bd6d6d;
-    height: 100vh;
+    background: #eb5252;
     display: flex;
     justify-content: center;
-    align-items: center;
+    padding: 300px;
 }
 
 .container {
-    background-color: #fff;
-    height: 200px;
-    width: 600px;    
+    background: white;
+    width: 600px;
+    height: 250px;
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     border-radius: 10px;
 }
 
-.inner-container {
-    padding: 50px;
-    text-align: center;
+.balance {
+    font-size: 40px;
+    color: green;
+    padding: 20px;
 }
 
 .buttons {
-    padding: 15px
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+}
+
+.deposit, .withdraw {
+    padding: 10px;
+    font-size: 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.deposit {
+    background-color: #4CAF50; /* Green */
+    color: white;
 }
 
 .withdraw {
-    background-color: grey;
+    background-color: #f44336; /* Red */
+    color: white;
 }
