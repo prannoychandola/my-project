@@ -1,0 +1,25 @@
+header {
+    border : 1px solid #000;
+    background-color: green;
+    grid-column: 1/span2;
+}
+nav {
+    border : 1px solid #000;
+    background-color: rgb(165, 165, 165);
+}
+main {
+    border : 1px solid #000;
+    grid-column: 2/span2;
+}
+footer {
+    border : 1px solid #000;
+    background-color: green;
+    grid-column: 1/span2;
+}
+
+body {
+    display: grid;
+    grid-template-columns: auto auto;
+    height: 100vh;
+    grid-template-rows: 100px auto 50px;
+}
