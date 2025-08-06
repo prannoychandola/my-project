@@ -7,23 +7,26 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
+    <input type="checkbox" id="theme">
+    <div class="dashboard">
+        <header>
         <h1>Admin Dashboard</h1>
-        <input type="checkbox">
-        <label>Dark Mode</label>
+        <label for="theme">Dark Mode</label>
     </header>
     <nav>
         <a class="navigation">Home</a>
         <a class="navigation">Users</a>
         <a class="navigation">Settings</a>
-
     </nav>
     <main>
         <h1>Welcome, Admin</h1>
-        <h2>This is the main content area. Add Charts, tables, or reports here.</h2>
+        <div class="content">
+            This is the main content area. Add Charts, tables, or reports here.
+        </div>
     </main>
     <footer>
         <h3>@2025 Admin Panel</h3>
     </footer>
+    </div>
 </body>
 </html>
