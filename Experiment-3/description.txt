@@ -1,0 +1,1 @@
+in this experiment i learnt to use grid properties in display and to adjust the size of rows and columns. also learnt how to take variables for using dark mode feature using css and html only.
