@@ -1,0 +1,1 @@
+created student registration form using html 5 validation in that created 3 input tags named name emailid and added min and max required.
