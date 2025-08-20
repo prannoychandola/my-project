@@ -1,0 +1,1 @@
+created html containing a box and below it number of characters count. linked it with javascript and implemented a function that changes the count everytime the character is entered in it.
