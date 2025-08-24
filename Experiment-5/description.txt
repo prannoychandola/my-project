@@ -1,3 +1,4 @@
 implemented java script code that has arrays in it of each category and then using the displayProducts function gave the output to the html.
 first i made sure that i wrote the elements in html so that I know how the styling will be done on them, then removed and placed it in the arrays in js.
 other than the display function i also used the default view when the sites loads, i.e all items to be displayed and added an eventlistener on change of the category.
+demo link: https://c6diht-8080.bytexl.dev/
