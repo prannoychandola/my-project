@@ -1,0 +1,5 @@
+This project implements a basic drawing tool using the HTML5 <canvas> element
+The JavaScript code attaches event listeners (mousedown, mousemove, mouseup) to track mouse input and render lines dynamically
+The 2D context API (getContext('2d')) is used with defined properties such as lineWidth, lineCap, and strokeStyle for smooth strokes
+A state flag manages active drawing, while previous cursor coordinates are updated to create continuous lines
+The CSS centers the canvas on the page, applies spacing, and adds borders to both the container and drawing area

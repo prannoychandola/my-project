@@ -1,0 +1,22 @@
+body {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.wrapper {
+    background-color: #ffffff;
+    padding: 30px;
+    border: 1px solid black;
+}
+
+h1 {
+    color: black;
+    margin-bottom: 20px;
+}
+
+#sketch-area {
+    border: 1px solid black;
+}
