@@ -1,0 +1,4 @@
+The task is to create a reusable React component named ProductCard that takes props for product name, 
+price, and stock status, and displays them clearly in a styled layout. By passing different values as props, 
+the same component can dynamically render multiple product variations without changing the component code, 
+demonstrating the flexibility and reusability of props in React.

@@ -1,0 +1,5 @@
+The task was to build a Library Management UI in React that displays a list of books with their titles and authors, 
+while allowing users to search, add, and remove books dynamically. A search bar should filter books by title or 
+author as the user types, an input form should let users add new books, and each book should include a remove button 
+to delete it. The interface should update instantly with every action, showcasing the use of state management, event 
+handling, and dynamic rendering in React.
