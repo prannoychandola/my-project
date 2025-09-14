@@ -1,0 +1,67 @@
+body{
+  background:#ffffff;
+  margin:0;
+  padding:20px;
+  color:#111;
+}
+.card{
+  width: 800px;
+  background:#fff;
+  border:1px solid black;
+  border-radius:10px;
+  padding:20px;
+}
+.search{
+  width:775px;
+  padding:10px;
+  font-size:15px;
+  margin-bottom:15px;
+  border:1px solid #000;
+  border-radius:5px;
+}
+.add-form{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+.input{
+  padding:10px;
+  font-size:15px;
+  border:1px solid #000;
+  border-radius:5px;
+}
+.btn{
+  padding:10px;
+  border:1px solid #000;
+  background:#fff;
+  cursor:pointer;
+  border-radius:5px;
+}
+.books{
+  margin-top:15px;
+}
+.book-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border:1px solid #000;
+  padding:10px;
+  border-radius:5px;
+  margin-bottom:10px;
+}
+.book-title{ 
+  font-weight:700; 
+}
+.book-author{ 
+  color:#444; 
+  margin-top:4px; 
+  font-size:13px; 
+}
+.remove{
+  border:1px solid #000;
+  background:#fff;
+  padding:10px;
+  cursor:pointer;
+  border-radius:5px;
+}
