@@ -1,0 +1,6 @@
+This React application demonstrates the concept of class inheritance in JavaScript by defining a base
+class (Human) with properties like name and age, and extending it into two subclasses: Learner, which 
+adds a major, and Mentor, which adds a subject area. Each class overrides a details() method to display 
+customized information. The App component creates instances of Learner and Mentor and renders their details 
+inside a simple, styled interface, making it a clear example of how object-oriented programming can be applied 
+within React.
