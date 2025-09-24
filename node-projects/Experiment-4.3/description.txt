@@ -1,0 +1,8 @@
+A ticket booking system was developed using Node.js and Express.js to manage concurrent 
+seat reservations. Seats are stored in-memory with states as available, locked, or booked. 
+A seat locking mechanism was implemented where a lock is held for one minute and requires 
+a unique lockId to confirm booking. Automatic expiry of locks ensures seats are released 
+if not confirmed in time. API endpoints were created to view seats, lock, confirm, and 
+unlock them with proper success and error messages. A test script was also written to simulate 
+multiple clients trying to lock the same seat simultaneously, demonstrating safe handling of 
+concurrency.

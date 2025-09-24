@@ -1,0 +1,6 @@
+A REST API was created using Express.js to manage a small collection of playing cards. 
+The data is stored in an in-memory array, with each card having an id, suit, and value. 
+Endpoints were implemented to list all cards, fetch a card by its ID, add a new card, and 
+delete a card by its ID. Each operation returns proper JSON responses along with suitable 
+status codes. A root route was also added to confirm the server is running. The API follows 
+RESTful principles and runs locally on port 3000.

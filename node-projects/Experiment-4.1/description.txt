@@ -1,0 +1,8 @@
+A CLI Employee Management System was developed using Node.js and the readline module. 
+The application provides an interactive menu that allows users to add new employees, list 
+all employees, remove employees by their ID, or exit the program. An in-memory array is 
+used to store employee details such as name and ID, ensuring data is managed directly 
+during the session. Input validations were included to prevent empty entries and duplicate 
+IDs. The menu is designed to reappear after every operation, giving users a continuous 
+interactive experience. Finally, the program exits cleanly with a goodbye message when the 
+quit option is selected.
