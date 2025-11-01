@@ -1,0 +1,76 @@
+services:
+  # 🧠 MongoDB Database
+  mongo:
+    image: mongo:6
+    container_name: mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  # 🤖 Flask ML Microservice
+  ml-service:
+    build:
+      context: ./ml-service
+      dockerfile: Dockerfile
+    container_name: ml-service
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongo
+    volumes:
+      - ./ml-service/artifacts:/app/artifacts
+      - ./ml-service/data:/app/data
+
+  # ⚙️ Express + Mongo Backend
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: backend
+    restart: unless-stopped
+    env_file:
+      - ./backend/.env.docker
+    depends_on:
+      - ml-service
+      - mongo
+    ports:
+      - "8000:8000"
+
+  # 🌐 React + Vite Frontend served by Nginx
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
+
+  # ℹ️ Info container (prints URLs neatly)
+  info:
+    image: alpine:3.18
+    container_name: info
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - |
+        echo "";
+        echo "✅ All services started successfully!";
+        echo "";
+        echo "🌐 Frontend:       http://localhost";
+        echo "⚙️  Backend:        http://localhost:8000/api/health";
+        echo "🤖 Flask ML API:   http://localhost:5000/api/predict";
+        echo "🧠 MongoDB:        mongodb://localhost:27017 (Compass)";
+        echo "";
+    depends_on:
+      - frontend
+      - backend
+      - ml-service
+      - mongo
+
+volumes:
+  mongo_data:
