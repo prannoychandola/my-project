@@ -1,0 +1,74 @@
+/* ===============================================
+   Global Theme Variables
+   =============================================== */
+:root {
+  --bg: #f5f6f8;
+  --text: #121417;
+  --muted: #5b6168;
+
+  --card-bg: #ffffff;
+  --card-border: #e5e7eb;
+
+  --primary: #2563eb;
+  --primary-text: #ffffff;
+  --input-bg: #ffffff;
+  --input-border: #ced3d9;
+  --input-text: #111827;
+
+  --overlay: rgba(15, 17, 21, 0.55);
+}
+
+/* Dark Mode */
+html.dark {
+  --bg: #0f1115;
+  --text: #e6e8eb;
+  --muted: #a6adbb;
+
+  --card-bg: #171a21;
+  --card-border: #2a2f3a;
+
+  --primary: #3b82f6;
+  --primary-text: #0b0e14;
+  --input-bg: #0f131a;
+  --input-border: #2b3240;
+  --input-text: #e8ebf0;
+
+  --overlay: rgba(0, 0, 0, 0.65);
+}
+
+/* Apply Theme to Whole Page */
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body,
+#root {
+  min-height: 100dvh;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth Scroll & Clean Scrollbar */
+html {
+  scroll-behavior: smooth;
+}
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--muted) transparent;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--muted);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
