@@ -1,1 +1,11 @@
-hello
+This workflow is responsible for building and deploying the project. 
+It includes steps for setting up the environment, installing dependencies, 
+building the project, and pushing the Docker image to Docker Hub. 
+The configuration uses Node.js as the runtime and ensures all build tasks 
+are executed in sequence whenever the workflow is triggered manually or 
+through code updates. The build process completes successfully, as indicated 
+by all executed steps such as setting up the job, checking out the repository, 
+configuring Node.js, installing dependencies, building the Docker image, 
+authenticating with Docker Hub, and pushing the image to the repository. 
+This confirms that the CI/CD pipeline is functioning correctly and the Docker 
+image is built and deployed without errors.
