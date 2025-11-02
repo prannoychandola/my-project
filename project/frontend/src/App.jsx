@@ -2,29 +2,34 @@ import React, { useEffect, useMemo, useState } from "react";
 import "./App.css";
 
 export default function App() {
-  // ------------------ THEME HANDLING ------------------
+  // ------------------ THEME ------------------
   const getInitialTheme = () => {
     const saved = localStorage.getItem("theme");
     if (saved) return saved;
     const prefersDark = window.matchMedia?.("(prefers-color-scheme: dark)").matches;
     return prefersDark ? "dark" : "light";
   };
-
   const [theme, setTheme] = useState(getInitialTheme);
-
   useEffect(() => {
     document.documentElement.classList.toggle("dark", theme === "dark");
     localStorage.setItem("theme", theme);
   }, [theme]);
-
   const toggleTheme = () => setTheme((t) => (t === "dark" ? "light" : "dark"));
+
+  // ------------------ API URL (IMPORTANT) ------------------
+  // Uses Vite env if available (Docker build or local .env).
+  // Falls back to localhost:5000 (your ml-service port from `docker ps`).
+  const API_URL =
+    (import.meta?.env?.VITE_ML_URL && String(import.meta.env.VITE_ML_URL).trim()) ||
+    "http://localhost:5000/predict";
+  console.log("Using ML API:", API_URL);
 
   // ------------------ FORM STATE ------------------
   const [form, setForm] = useState({
     sleep_hours: "",
     study_hours: "",
-    screen_time: "",
-    physical_activity: "",
+    screen_time_hours: "",
+    physical_activity_minutes: "",
     diet_quality: "",
     caffeine_intake: "",
     social_interaction: "",
@@ -52,17 +57,32 @@ export default function App() {
         Object.entries(form).map(([k, v]) => [k, Number(v)])
       );
 
-      // TODO: Replace with Flask backend API call
-      const fakeProb = Math.min(
-        0.99,
-        Math.max(0.01, (payload.screen_time + payload.loneliness_score) / 20 / 2)
-      );
-      const data = { probability: fakeProb, label: fakeProb > 0.5 ? "High" : "Low" };
+      const res = await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
 
-      setResult(data);
+      // Read raw first to surface HTML errors (like 404 pages)
+      const text = await res.text();
+      let data;
+      try {
+        data = JSON.parse(text);
+      } catch {
+        alert(`API returned non-JSON (status ${res.status}). First 200 chars:\n${text.slice(0, 200)}`);
+        return;
+      }
+      if (!data.success) throw new Error(data.error || `Request failed (${res.status})`);
+
+      // Prefer server-provided risk band; fallback to same thresholds
+      const p = Number(data.probability ?? 0);
+      const risk = data.risk_level ?? (p > 0.66 ? "High" : p >= 0.33 ? "Medium" : "Low");
+
+      setResult({ probability: p, riskLevel: risk });
       setShowModal(true);
     } catch (err) {
       console.error("Prediction failed:", err);
+      alert(err.message || "Prediction failed");
     }
   };
 
@@ -87,8 +107,8 @@ export default function App() {
             {[
               ["sleep_hours", "Sleep Hours", "e.g., 7"],
               ["study_hours", "Study Hours", "e.g., 4"],
-              ["screen_time", "Screen Time (hours/day)", "e.g., 5"],
-              ["physical_activity", "Physical Activity (minutes/day)", "e.g., 30"],
+              ["screen_time_hours", "Screen Time (hours/day)", "e.g., 5"],
+              ["physical_activity_minutes", "Physical Activity (minutes/day)", "e.g., 30"],
               ["diet_quality", "Diet Quality (1–10)", "Rate diet quality (1–10)"],
               ["caffeine_intake", "Caffeine Intake (cups/day 0–10)", "e.g., 2"],
               ["social_interaction", "Social Interaction (1–10)", "Rate social interaction (1–10)"],
@@ -134,10 +154,15 @@ export default function App() {
                 Risk Level:{" "}
                 <strong
                   style={{
-                    color: result.label === "High" ? "#ef4444" : "#10b981",
+                    color:
+                      result.riskLevel === "High"
+                        ? "#ef4444"
+                        : result.riskLevel === "Medium"
+                        ? "#f59e0b"
+                        : "#10b981",
                   }}
                 >
-                  {result.label}
+                  {result.riskLevel}
                 </strong>
               </p>
             </div>

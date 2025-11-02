@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 set -e
 
-if [ ! -f artifacts/logistic_regression_model.pkl ] || [ ! -f artifacts/standard_scaler.pkl ]; then
-  echo "[ml-service] Artifacts missing → training model..."
+echo "[start] Checking for model artifacts..."
+if [ ! -f "artifacts/model_bundle.pkl" ]; then
+  echo "[start] No model found. Training model now..."
   python train_model.py
 else
-  echo "[ml-service] Found artifacts → skipping training."
+  echo "[start] Model found. Skipping training."
 fi
 
-echo "[ml-service] Starting Flask..."
+echo "[start] Launching Flask ML API..."
 python app.py
