@@ -50,6 +50,9 @@ services:
       echo '============================================================';
       echo '';
       "
+    depends_on:
+      - frontend
+      - ml-service
     restart: "no"
 
 volumes:
