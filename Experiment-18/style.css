@@ -1,0 +1,54 @@
+:root {
+    --bg-color-header: green;
+    --bg-color-main: white;
+    --bg-color-footer: green;
+    --text-color-main: black;
+}
+input:checked ~ .dashboard {
+    --bg-color-header: black;
+    --bg-color-main: black;
+    --bg-color-footer: black;
+    --text-color-main: white;
+}
+header {
+    border : 1px solid #000;
+    background-color: var(--bg-color-header);
+    grid-column: 1/span2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    color: white;
+}
+nav {
+    border : 1px solid #000;
+    background-color: grey;
+}
+main {
+    border : 1px solid #000;
+    grid-column: 2/span2;
+    padding: 20px;
+    background-color: var(--bg-color-main);
+    color: var(--text-color-main);
+}
+.content {
+    font-size: 25px;
+}
+footer {
+    border : 1px solid #000;
+    background-color: var(--bg-color-footer);
+    grid-column: 1/span2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+.dashboard {
+    display: grid;
+    grid-template-columns: 300px auto;
+    height: 100vh;
+    grid-template-rows: 100px auto 50px;
+}
+#theme {
+    display: none;
+}
