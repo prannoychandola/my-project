@@ -1,0 +1,24 @@
+StressSense AI is a full-stack MERN-based web application integrated with an AI-powered 
+predictive model that analyzes user responses to assess their stress levels. The system 
+leverages Machine Learning, Flask microservices, Docker, and MongoDB to deliver real-time 
+predictions through a modern and responsive user interface.
+
+The frontend is developed using React.js, providing a clean, interactive, and 
+mobile-responsive user experience. Users fill out a form with various behavioral and 
+lifestyle parameters, which are then sent securely to the backend for prediction. The 
+frontend also supports features like dark mode, form validation, and animated modal results 
+to enhance usability.
+
+On the backend, Express.js and Node.js handle API requests, route management, and 
+communication between the React frontend and the AI microservice. The AI model, built with 
+Python (Flask), uses logistic regression and a standard scaler to process user inputs and 
+predict the stress level (e.g., low, medium, or high). This microservice is containerized 
+and runs independently for scalability and modularity.
+
+Data storage is managed using MongoDB, which keeps user logs, prediction records, and 
+feedback securely. The entire system is orchestrated using Docker Compose, ensuring seamless 
+deployment of all services — frontend, backend, ML service, and database — as isolated yet 
+interconnected containers.
+
+Additionally, the project is integrated with Git & GitHub for version control and hosted 
+locally via Docker, with compatibility for deployment on Azure Cloud.
